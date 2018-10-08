@@ -8,7 +8,7 @@ module.exports.map = map;
 function stream(fn) {
     return Combiner(geojsonStream.parse(),
         through(function(feature, callback) {
-            this.queue(retag(feature, fn));
+            this.queue(map(feature, fn));
         }),
         geojsonStream.stringify());
 }
